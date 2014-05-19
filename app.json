@@ -10,5 +10,8 @@
 		"not_found": {
 			"html": "public/html/404.html"
 		}
-	}
+	},
+	"modules": [
+		"management"
+	]
 }
