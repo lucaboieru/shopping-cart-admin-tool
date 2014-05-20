@@ -56,7 +56,8 @@
 .pl-l  { padding-left: 50px    !important; }
 .pl-xl { padding-left: 100px   !important; }
 
-.p-xs { padding: 5px     !important; }
+.p-xxs{ padding: 5px     !important; }
+.p-xs { padding: 10px    !important; }
 .p-s  { padding: 15px    !important; }
 .p-m  { padding: 25px    !important; }
 .p-l  { padding: 50px    !important; }

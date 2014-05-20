@@ -6,10 +6,39 @@
     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
+
+            $.ajax({
+                url: "http://localhost:9016/@/management/log",
+                type: "POST",
+                data: {"app": window.app},
+                crossDomain: true,
+                error: function(jqXHR, exception) {
+                    if (jqXHR.status === 0) {
+                        alert('Not connect.\n Verify Network.');
+                    } else if (jqXHR.status == 404) {
+                        alert('Requested page not found. [404]');
+                    } else if (jqXHR.status == 500) {
+                        alert('Internal Server Error [500].');
+                    } else if (exception === 'parsererror') {
+                        alert('Requested JSON parse failed.');
+                    } else if (exception === 'timeout') {
+                        alert('Time out error.');
+                    } else if (exception === 'abort') {
+                        alert('Ajax request aborted.');
+                    } else {
+                        alert('Uncaught Error.\n' + jqXHR.responseText);
+                    }
+                },
+                success: function (data) {
+                    $(".log").text(data);
+                }
+            });
+
             $(".update").click(function (e) {
                 $.ajax({
                     url: "http://localhost:9016/@/management/restart",
                     type: "POST",
+                    data: {"app": $(this).attr("app")},
                     crossDomain: true,
                     error: function(jqXHR, exception) {
                         if (jqXHR.status === 0) {
@@ -53,11 +82,11 @@
 
     <div class="col-sm-6">
         <h3>Log</h3>
-        <div class="well"></div>
+        <div class="well log"></div>
     </div>
     <div class="col-sm-6">
         <h3>Actions</h3>
-        <button class="btn btn-success update"><span class="glyphicon glyphicon-cloud-download"></span> Update Server</button>
+        <button class="btn btn-success update" app="shopping-cart-server"><span class="glyphicon glyphicon-cloud-download"></span> Update Server</button>
         <div class="status alert alert-success hided mt-ms"></div>
     </div>
 
