@@ -36,7 +36,7 @@
 
             $(".update").click(function (e) {
                 $.ajax({
-                    url: "http://localhost:9016/@/management/restart",
+                    url: "http://137.135.177.105:9016/@/management/restart",
                     type: "POST",
                     data: {"app": $(this).attr("app")},
                     crossDomain: true,
