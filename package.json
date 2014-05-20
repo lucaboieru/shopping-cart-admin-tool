@@ -5,6 +5,7 @@
     "main": "scrap.js",
     "author": "Danandrei",
     "dependencies": {
+    	"gift": "latest",
     	"express": "3.7.0",
         "request": "latest",
         "cheerio": "latest",
