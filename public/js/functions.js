@@ -23,7 +23,7 @@ $(document).ready(function () {
                 app: app
             }
         }, function (err, data) {
-            $(".status").html("App updated.").show();
+            $(".status").html("<span class='glyphicon glyphicon-ok'></span> App updated.").show();
         });
     });
 
@@ -36,7 +36,7 @@ $(document).ready(function () {
                 app: app
             }
         }, function (err, data) {
-            $(".status").html("App started.").show();
+            $(".status").html("<span class='glyphicon glyphicon-ok'></span> App started.").show();
         });
     });
 
@@ -49,7 +49,7 @@ $(document).ready(function () {
                 app: app
             }
         }, function (err, data) {
-            $(".status").html("App stopped.").show();
+            $(".status").html("<span class='glyphicon glyphicon-ok'></span> App stopped.").show();
         });
     });
 });
