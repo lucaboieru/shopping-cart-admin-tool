@@ -14,16 +14,42 @@ $(document).ready(function () {
         $('.logContent').html('').addClass('hided');
     });
 
-    // restart request
+    // update request
     $(".update").on('click', function () {
         var app = $(this).attr("app");
         makeAjaxRequest({
-            operation: '/@/management/restart',
+            operation: '/@/management/update',
             data: {
                 app: app
             }
         }, function (err, data) {
-            $(".status").html("App updated").show();
+            $(".status").html("App updated.").show();
+        });
+    });
+
+    // start request
+    $(".start").on('click', function () {
+        var app = $(this).attr("app");
+        makeAjaxRequest({
+            operation: '/@/management/start',
+            data: {
+                app: app
+            }
+        }, function (err, data) {
+            $(".status").html("App started.").show();
+        });
+    });
+
+    // stop request
+    $(".stop").on('click', function () {
+        var app = $(this).attr("app");
+        makeAjaxRequest({
+            operation: '/@/management/stop',
+            data: {
+                app: app
+            }
+        }, function (err, data) {
+            $(".status").html("App stopped.").show();
         });
     });
 });

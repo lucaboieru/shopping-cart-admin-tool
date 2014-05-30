@@ -4,7 +4,7 @@ var exec = require('child_process').exec;
 var MongoClient = require('mongodb').MongoClient;
 var ObjectId = require('mongodb').ObjectID;
 
-exports.restart = function (link) {
+exports.update = function (link) {
 
     var app = link.data.app;
 
@@ -19,16 +19,35 @@ exports.restart = function (link) {
             git.clone("git@github.com:square-gmbh/" + app + ".git", "apps/" + app, function (err, repo) {
                 if (err) { console.log(err); }
 
-                exec("forever start apps/" + app + "/server.js", function (err) {
-
-                    if (err) { console.log(err); }
-
-                    link.res.setHeader('Access-Control-Allow-Origin', link.headers.origin);
-                    link.res.writeHead(200, {'Content-Type': 'text/plain'});
-                    link.res.end("App updated!");
-                });
+                link.res.setHeader('Access-Control-Allow-Origin', link.headers.origin);
+                link.res.writeHead(200, {'Content-Type': 'text/plain'});
+                link.res.end("App updated!");
             });
         });
+    });
+}
+
+exports.start = function (link) {
+    var app = link.data.app;
+
+    exec("forever start apps/" + app + "/server.js", function (err) {
+        if (err) { console.log(err); }
+
+        link.res.setHeader('Access-Control-Allow-Origin', link.headers.origin);
+        link.res.writeHead(200, {'Content-Type': 'text/plain'});
+        link.res.end("App started!");
+    });
+}
+
+exports.stop = function (link) {
+    var app = link.data.app;
+
+    exec("forever stop apps/" + app + "/server.js", function (err) {
+        if (err) { console.log(err); }
+
+        link.res.setHeader('Access-Control-Allow-Origin', link.headers.origin);
+        link.res.writeHead(200, {'Content-Type': 'text/plain'});
+        link.res.end("App stopped!");
     });
 }
 
