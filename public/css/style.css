@@ -62,3 +62,37 @@
 .p-m  { padding: 25px    !important; }
 .p-l  { padding: 50px    !important; }
 .p-xl { padding: 100px   !important; }
+
+.file-list {
+	padding: 0;
+}
+
+.file-group {
+	background-color: #FFF;
+	border-radius: 5px;
+	font-weight: bold;
+	height: auto;
+	padding: 6px;
+	display: inline-block;
+	position: relative;
+	width: 100%;
+}
+
+.file-group:hover {
+	cursor: pointer;
+}
+
+.logContent {
+	background-color: #FFF;
+	border-radius: 5px;
+	font-weight: bold;
+	height: auto;
+	padding: 6px;
+}
+
+.logControls {
+	background-color: #FFF;
+	border-radius: 5px;
+	height: auto;
+	padding: 6px;
+}
