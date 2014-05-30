@@ -6,7 +6,7 @@ var ObjectId = require('mongodb').ObjectID;
 
 exports.restart = function (link) {
 
-    var app = "shopping-cart-server";
+    var app = link.data.app;
 
     exec("forever stop apps/" + app + "/server.js", function (err) {
 
@@ -16,13 +16,14 @@ exports.restart = function (link) {
 
             if (err) { console.log(err); }
 
-            git.clone("git@bitbucket.org:lucaboieru/" + app + ".git", "apps/" + app, function (err, repo) {
+            git.clone("git@github.com:square-gmbh/" + app + ".git", "apps/" + app, function (err, repo) {
                 if (err) { console.log(err); }
 
                 exec("forever start apps/" + app + "/server.js", function (err) {
 
                     if (err) { console.log(err); }
 
+                    link.res.setHeader('Access-Control-Allow-Origin', link.headers.origin);
                     link.res.writeHead(200, {'Content-Type': 'text/plain'});
                     link.res.end("App updated!");
                 });

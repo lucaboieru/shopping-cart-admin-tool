@@ -13,6 +13,19 @@ $(document).ready(function () {
     $('.clearBtn').on('click', function () {
         $('.logContent').html('').addClass('hided');
     });
+
+    // restart request
+    $(".update").on('click', function () {
+        var app = $(this).attr("app");
+        makeAjaxRequest({
+            operation: '/@/management/restart',
+            data: {
+                app: app
+            }
+        }, function (err, data) {
+            $(".status").html("App updated").show();
+        });
+    });
 });
 
 function selectItem ($item) {
