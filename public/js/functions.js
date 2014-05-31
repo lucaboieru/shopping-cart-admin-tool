@@ -17,10 +17,12 @@ $(document).ready(function () {
     // update request
     $(".update").on('click', function () {
         var app = $(this).attr("app");
+        var log = $(ACTIVE_TAB).find('.log').attr('log');
         makeAjaxRequest({
             operation: '/@/management/update',
             data: {
-                app: app
+                app: app,
+                log: log
             }
         }, function (err, data) {
             $(".status").html("<span class='glyphicon glyphicon-ok'></span> Your app has been updated.").fadeIn(500);

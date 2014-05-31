@@ -7,6 +7,7 @@ var ObjectId = require('mongodb').ObjectID;
 exports.update = function (link) {
 
     var app = link.data.app;
+    var log = link.data.log;
 
     exec("forever stop apps/" + app + "/server.js", function (err) {
 
@@ -23,6 +24,27 @@ exports.update = function (link) {
                 link.res.writeHead(200, {'Content-Type': 'text/plain'});
                 link.res.end("App updated!");
             });
+        });
+    });
+
+    // delete logs
+    // connect to db
+    MongoClient.connect('mongodb://127.0.0.1:27017/scanner', function (err, db) {
+        
+        if (err) {
+            link.res.writeHead(500);
+            link.res.end();
+            return;
+        }
+
+        var collection = db.collection('logs');
+        collection.remove({ "log": log }, function (err) {
+
+            if (err) {
+                link.res.writeHead(500);
+                link.res.end();
+                return;
+            }
         });
     });
 }
