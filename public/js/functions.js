@@ -129,10 +129,21 @@ function showLog (data) {
 
     if (!data) { return; }
 
-    data = jQuery.parseJSON(data).toString();
+    var log = jQuery.parseJSON(data);
+
+    for (var i = 0; i < log.length; ++i) {
+        if (log[i].indexOf('LOG') != -1) {
+            var el = '<p log-type="LOG">'+ log[i] + '</p>';
+        } else {
+            var el = '<p log-type="ERROR" class="error">'+ log[i] + '</p>';
+        }
+
+        // add the data to the container
+        $('.logContent', ACTIVE_TAB).append(el);
+    }
 
     // add the data to the container
-    $('.logContent', ACTIVE_TAB).html(data).removeClass('hided');
+    $('.logContent', ACTIVE_TAB).removeClass('hided');
 }
 
 function makeAjaxRequest (ajaxObj, callback) {

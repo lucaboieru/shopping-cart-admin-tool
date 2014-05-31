@@ -85,9 +85,13 @@
 .logContent {
 	background-color: #FFF;
 	border-radius: 5px;
-	font-weight: bold;
 	height: auto;
 	padding: 6px;
+}
+
+.error {
+	color: red;
+	font-weight: bold;
 }
 
 .logControls {

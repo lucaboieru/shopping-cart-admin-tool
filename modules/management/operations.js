@@ -145,7 +145,7 @@ exports.getLog = function (link) {
                 }
 
                 // send back the contents of the log
-                link.res.end(JSON.stringify(data));
+                link.res.end(JSON.stringify(data.split('§')));
             });
         });
     });
