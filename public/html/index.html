@@ -1,8 +1,9 @@
 <html>
 <head>
     <title>Admin Tool</title>
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
     <script type="text/javascript" src="../js/jquery.js"></script>
     <script type="text/javascript" src="../js/functions.js"></script>
 </head>
@@ -13,8 +14,8 @@
             <a class="navbar-brand" href="#">Square App Manager</a>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
-                    <li><a class="tabSel" data-action="scServer" log="server">SC Server</a></li>
-                    <li><a class="tabSel" data-action="scScraper" log="scraper">SC Scraper</a></li>
+                    <li><a class="tabSel" data-action="scServer" log="server" data-app="shopping-cart-server">SC Server</a></li>
+                    <li><a class="tabSel" data-action="scScraper" log="scraper" data-app="shop-scraper">SC Scraper</a></li>
                 </ul>
             </div>
         </div>
@@ -24,8 +25,8 @@
             <h1>SC Server</h1>
             <p>Shopping Cart Node JS Server.</p>
             <div class="btn-group">
-                <button class="btn btn-success start" app="shopping-cart-server"><span class="glyphicon glyphicon-play-circle"></span> Start</button>
-                <button class="btn btn-danger stop" app="shopping-cart-server"><span class="glyphicon glyphicon-off"></span> Stop</button>
+                <button class="btn btn-success start" app="shopping-cart-server" disabled="disabled"><span class="glyphicon glyphicon-play-circle"></span> Start</button>
+                <button class="btn btn-danger stop" app="shopping-cart-server" disabled="disabled"><span class="glyphicon glyphicon-off"></span> Stop</button>
             </div>
             <button class="btn btn-invert update" app="shopping-cart-server"><span class="glyphicon glyphicon-cloud-download"></span> Update App</button>
         </div>
@@ -47,8 +48,8 @@
             <h1>SC Scraper</h1>
             <p>Shopping Cart Node JS Scraper.</p>
             <div class="btn-group">
-                <button class="btn btn-success start" app="shop-scraper"><span class="glyphicon glyphicon-play-circle"></span> Start</button>
-                <button class="btn btn-danger stop" app="shop-scraper"><span class="glyphicon glyphicon-off"></span> Stop</button>
+                <button class="btn btn-success start" app="shop-scraper" disabled="disabled"><span class="glyphicon glyphicon-play-circle"></span> Start</button>
+                <button class="btn btn-danger stop" app="shop-scraper" disabled="disabled"><span class="glyphicon glyphicon-off"></span> Stop</button>
             </div>
             <button class="btn btn-invert update" app="shop-scraper"><span class="glyphicon glyphicon-cloud-download"></span> Update App</button>
         </div>

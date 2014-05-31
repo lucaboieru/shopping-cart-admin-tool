@@ -85,6 +85,23 @@ exports.stop = function (link) {
     });
 }
 
+exports.checkAppStatus = function (link) {
+    var app = link.data.app;
+
+    exec('forever list | grep "' + app + '"', function (err, data) {
+        var resp;
+        if (err) {
+            resp = "stopped";
+        } else {
+            resp = "running";
+        }
+
+        link.res.setHeader('Access-Control-Allow-Origin', link.headers.origin);
+        link.res.writeHead(200, {'Content-Type': 'text/plain'});
+        link.res.end(resp);
+    });
+}
+
 exports.getLogs = function (link) {
 
     if (!link.data.log) {

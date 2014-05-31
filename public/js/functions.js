@@ -32,6 +32,8 @@ $(document).ready(function () {
                 $(".status").html("<span class='glyphicon glyphicon-ok'></span> Your app has been updated.").fadeIn(500);
             }
 
+            checkAppStatus(app);
+
             setTimeout(function () {
                 $(".status").fadeOut(500);
             }, 5000);
@@ -55,6 +57,8 @@ $(document).ready(function () {
                 $(".status").html("<span class='glyphicon glyphicon-ok'></span> Your app has been started.").fadeIn(500);
             }
 
+            checkAppStatus(app);
+
             setTimeout(function () {
                 $(".status").fadeOut(500);
             }, 5000);
@@ -72,10 +76,12 @@ $(document).ready(function () {
         }, function (err, data) {
 
             if (err) {
-                $(".status").html("<span class='glyphicon glyphicon-ok'></span> " + err).addClass("status-error").fadeIn(500);
+                $(".status").html("<span class='glyphicon glyphicon-remove'></span> " + err).addClass("status-error").fadeIn(500);
             } else {
                 $(".status").html("<span class='glyphicon glyphicon-ok'></span> Your app has been stopped.").fadeIn(500);
             }
+
+            checkAppStatus(app);
 
             setTimeout(function () {
                 $(".status").fadeOut(500);
@@ -99,6 +105,9 @@ function selectItem ($item) {
 
     // get the logs for the selected item
     getLogs($item.attr('log'));
+
+    // check application status
+    checkAppStatus($item.attr('data-app'));
 }
 
 function getLogs (item) {
@@ -177,6 +186,25 @@ function showLog (data) {
 
     // add the data to the container
     $('.logContent', ACTIVE_TAB).removeClass('hided');
+}
+
+function checkAppStatus (app) {
+    makeAjaxRequest({
+        operation: '/@/management/checkAppStatus',
+        data: {
+            app: app
+        }
+    }, function (err, data) {
+        if (err) { return; }
+
+        if (data === "running") {
+            $(".start[app=" + app + "]").attr("disabled", "disabled");
+            $(".stop[app=" + app + "]").removeAttr("disabled");
+        } else {
+            $(".stop[app=" + app + "]").attr("disabled", "disabled");
+            $(".start[app=" + app + "]").removeAttr("disabled");
+        }
+    });
 }
 
 function makeAjaxRequest (ajaxObj, callback) {

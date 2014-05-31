@@ -63,6 +63,16 @@
 .p-l  { padding: 50px    !important; }
 .p-xl { padding: 100px   !important; }
 
+.navbar-brand {
+	font-family: 'Lobster', cursive;
+	color: #ddd !important;
+	font-size: 23px;
+}
+
+.navbar-brand:hover {
+	color: #fff !important;
+}
+
 .status {
 	position: fixed;
 	top: 60px;
