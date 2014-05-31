@@ -63,6 +63,18 @@
 .p-l  { padding: 50px    !important; }
 .p-xl { padding: 100px   !important; }
 
+.status {
+	position: fixed;
+	top: 60px;
+	right: 50px;
+	padding: 15px;
+	border-radius: 10px;
+	background-color: #000;
+	opacity: 0.5;
+	color: #fff;
+	z-index: 10000;
+}
+
 .file-list {
 	padding: 0;
 }

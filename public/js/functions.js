@@ -23,7 +23,10 @@ $(document).ready(function () {
                 app: app
             }
         }, function (err, data) {
-            $(".status").html("<span class='glyphicon glyphicon-ok'></span> App updated.").show();
+            $(".status").html("<span class='glyphicon glyphicon-ok'></span> Your app has been updated.").fadeIn(500);
+            setTimeout(function () {
+                $(".status").fadeOut(500);
+            }, 5000);
         });
     });
 
@@ -36,7 +39,10 @@ $(document).ready(function () {
                 app: app
             }
         }, function (err, data) {
-            $(".status").html("<span class='glyphicon glyphicon-ok'></span> App started.").show();
+            $(".status").html("<span class='glyphicon glyphicon-ok'></span> Your app has been started.").fadeIn(500);
+            setTimeout(function () {
+                $(".status").fadeOut(500);
+            }, 5000);
         });
     });
 
@@ -49,7 +55,10 @@ $(document).ready(function () {
                 app: app
             }
         }, function (err, data) {
-            $(".status").html("<span class='glyphicon glyphicon-ok'></span> App stopped.").show();
+            $(".status").html("<span class='glyphicon glyphicon-ok'></span> Your app has been stopped.").fadeIn(500);
+            setTimeout(function () {
+                $(".status").fadeOut(500);
+            }, 5000);
         });
     });
 });
