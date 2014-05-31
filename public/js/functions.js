@@ -25,7 +25,13 @@ $(document).ready(function () {
                 log: log
             }
         }, function (err, data) {
-            $(".status").html("<span class='glyphicon glyphicon-ok'></span> Your app has been updated.").fadeIn(500);
+
+            if (err) {
+                $(".status").html("<span class='glyphicon glyphicon-remove'></span> " + err).addClass("status-error").fadeIn(500);
+            } else {
+                $(".status").html("<span class='glyphicon glyphicon-ok'></span> Your app has been updated.").fadeIn(500);
+            }
+
             setTimeout(function () {
                 $(".status").fadeOut(500);
             }, 5000);
@@ -41,7 +47,14 @@ $(document).ready(function () {
                 app: app
             }
         }, function (err, data) {
-            $(".status").html("<span class='glyphicon glyphicon-ok'></span> Your app has been started.").fadeIn(500);
+
+            if (err) {
+                $(".status").html("<span class='glyphicon glyphicon-remove'></span> " + err).addClass("status-error").fadeIn(500);
+
+            } else {
+                $(".status").html("<span class='glyphicon glyphicon-ok'></span> Your app has been started.").fadeIn(500);
+            }
+
             setTimeout(function () {
                 $(".status").fadeOut(500);
             }, 5000);
@@ -57,7 +70,13 @@ $(document).ready(function () {
                 app: app
             }
         }, function (err, data) {
-            $(".status").html("<span class='glyphicon glyphicon-ok'></span> Your app has been stopped.").fadeIn(500);
+
+            if (err) {
+                $(".status").html("<span class='glyphicon glyphicon-ok'></span> " + err).addClass("status-error").fadeIn(500);
+            } else {
+                $(".status").html("<span class='glyphicon glyphicon-ok'></span> Your app has been stopped.").fadeIn(500);
+            }
+
             setTimeout(function () {
                 $(".status").fadeOut(500);
             }, 5000);
@@ -169,11 +188,11 @@ function makeAjaxRequest (ajaxObj, callback) {
         crossDomain: true,
         error: function(jqXHR, exception) {
             if (jqXHR.status === 0) {
-                callback('Not connect. Verify Network.');
+                callback('Not connect. Verify Network.' + jqXHR.responseText);
             } else if (jqXHR.status == 404) {
-                callback('Requested page not found. [404]');
+                callback('Requested page not found. [404].' + jqXHR.responseText);
             } else if (jqXHR.status == 500) {
-                callback('Internal Server Error [500].');
+                callback('Internal Server Error [500].' + jqXHR.responseText);
             } else if (exception === 'parsererror') {
                 callback('Requested JSON parse failed.');
             } else if (exception === 'timeout') {

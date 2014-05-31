@@ -106,6 +106,10 @@
 	font-weight: bold;
 }
 
+.status-error {
+	background-color: red;
+}
+
 .logControls {
 	background-color: #FFF;
 	border-radius: 5px;

@@ -1,10 +1,13 @@
 var fs = require('fs');
-var git = require('gift');
+var git = require('./git');
 var exec = require('child_process').exec;
 var MongoClient = require('mongodb').MongoClient;
 var ObjectId = require('mongodb').ObjectID;
 
+
 exports.update = function (link) {
+    // set the response header
+    link.res.setHeader('Access-Control-Allow-Origin', link.headers.origin);
 
     var app = link.data.app;
     var log = link.data.log;
@@ -15,12 +18,21 @@ exports.update = function (link) {
 
         exec("rm -Rf apps/" + app, function (err) {
 
-            if (err) { console.log(err); }
+            // handle error
+            if (err) { 
+                console.log(err);
+            }
 
-            git.clone("git@github.com:square-gmbh/" + app + ".git", "apps/" + app, function (err, repo) {
-                if (err) { console.log(err); }
+            // clone the repo
+            git.cloneToDir(app, "apps/", function (err) {
 
-                link.res.setHeader('Access-Control-Allow-Origin', link.headers.origin);
+                if (err) {
+                    link.res.writeHead(500);
+                    link.res.end(JSON.stringify(err));
+                    return;                
+                }
+
+                // all good
                 link.res.writeHead(200, {'Content-Type': 'text/plain'});
                 link.res.end("App updated!");
             });
@@ -33,7 +45,7 @@ exports.update = function (link) {
         
         if (err) {
             link.res.writeHead(500);
-            link.res.end();
+            link.res.end(JSON.stringify(err));
             return;
         }
 
@@ -42,7 +54,7 @@ exports.update = function (link) {
 
             if (err) {
                 link.res.writeHead(500);
-                link.res.end();
+                link.res.end(JSON.stringify(err));
                 return;
             }
         });
@@ -99,7 +111,7 @@ exports.getLogs = function (link) {
 
             if (err) {
                 link.res.writeHead(500);
-                link.res.end();
+                link.res.end(JSON.stringify(err));
                 return;
             }
             // send response
@@ -143,13 +155,12 @@ exports.getLog = function (link) {
             // handle error
             if (err) {
                 link.res.writeHead(500);
-                link.res.end();
+                link.res.end(JSON.stringify(err));
                 return;
             }
             if (!doc) {
-                console.error('log not found');
                 link.res.writeHead(500);
-                link.res.end();
+                link.res.end('log not found');
                 return;
             }
 
@@ -160,9 +171,8 @@ exports.getLog = function (link) {
             fs.readFile(file, 'utf8', function (err, data) {
 
                 if (err) {
-                    console.log(err);
                     link.res.writeHead(500);
-                    link.res.end();
+                    link.res.end(JSON.stringify(err));
                     return;
                 }
 
