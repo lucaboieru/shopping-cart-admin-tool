@@ -140,6 +140,9 @@ function showLog (data) {
 
     var log = jQuery.parseJSON(data);
 
+    // clear the log container
+    $('.logContent', ACTIVE_TAB).html('');
+
     for (var i = 0; i < log.length; ++i) {
         if (log[i].indexOf('LOG') != -1) {
             var el = '<p log-type="LOG">'+ log[i] + '</p>';
