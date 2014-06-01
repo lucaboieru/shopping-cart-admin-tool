@@ -1,0 +1,28 @@
+<html>
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script type="text/javascript" src="../js/jquery.js"></script>
+    <script type="text/javascript" src="../js/functions.js"></script>
+</head>
+<body class="login-container">
+    <div class="status hided"></div>
+    <nav class="navbar navbar-default navbar-static-top navbar-inverse" role="navigation">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">Square App Manager</a>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            </div>
+        </div>
+    </nav>
+    <div class="container mt-l">
+        <form class="form-login" role="form" method="POST" action="/@/login/login">
+            <h2 class="form-login-heading">Please log in</h2>
+            <input type="text" class="form-control" placeholder="Username" name="user" required autofocus>
+            <input type="password" class="form-control" placeholder="Password" name="pass" required>
+
+            <button class="btn btn-lg btn-primary btn-block" type="submit">log in</button>
+        </form>
+    </div>
+</body>
+</html>

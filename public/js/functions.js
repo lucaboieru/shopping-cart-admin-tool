@@ -14,6 +14,24 @@ $(document).ready(function () {
         $('.logContent').html('').addClass('hided');
     });
 
+    // logout
+    $('.logout').on('click', function () {
+        makeAjaxRequest({
+            operation: '/@/login/logout'
+        }, function (err, data) {
+
+            if (err) {
+                $(".status").html("<span class='glyphicon glyphicon-remove'></span> " + err).addClass("status-error").fadeIn(500);
+            } else {
+                $(".status").html("<span class='glyphicon glyphicon-ok'></span> You have been logged out.").fadeIn(500);
+            }
+
+            setTimeout(function () {
+                $(".status").fadeOut(500);
+            }, 5000);
+        });
+    })
+
     // update request
     $(".update").on('click', function () {
         var app = $(this).attr("app");

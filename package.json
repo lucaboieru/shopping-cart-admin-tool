@@ -2,15 +2,13 @@
     "name": "admin-tool",
     "version": "0.0.1",
     "description": "Admin tool for square server apps.",
-    "main": "scrap.js",
+    "main": "server.js",
     "author": "Danandrei",
     "dependencies": {
-    	"gift": "latest",
-    	"express": "3.7.0",
+        "express": "3.7.0",
         "request": "latest",
         "cheerio": "latest",
         "mongodb": "latest",
-        "progress": "latest",
         "node-schedule": "latest"
     }
 }

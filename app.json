@@ -1,17 +1,30 @@
 {
-	"appID": "admintool",
-	"routes": {
-		"/": "index"
-	},
-	"pages": {
-		"index": {
-			"html": "public/html/index.html"
-		},
-		"not_found": {
-			"html": "public/html/404.html"
-		}
-	},
-	"modules": [
-		"management"
-	]
+    "appID": "admintool",
+    "routes": {
+        "/": "index",
+        "/login": "login"
+    },
+    "pages": {
+        "index": {
+            "html": "public/html/index.html",
+            "roles": ["admin"],
+            "roleFail": [
+                { "redirect": "/login" }
+            ]
+        },
+        "login": {
+            "html": "public/html/login.html",
+            "roles": ["visitator"],
+            "roleFail": [
+                { "redirect": "/" }
+            ]
+        },
+        "not_found": {
+            "html": "public/html/404.html"
+        }
+    },
+    "modules": [
+        "management",
+        "login"
+    ]
 }

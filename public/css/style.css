@@ -1,10 +1,10 @@
 * {
-	padding: 0;
-	margin: 0;
+    padding: 0;
+    margin: 0;
 }
 
 .hided {
-	display: none;
+    display: none;
 }
 
 .mt-xs { margin-top: 5px   !important; }
@@ -64,65 +64,106 @@
 .p-xl { padding: 100px   !important; }
 
 .navbar-brand {
-	font-family: 'Lobster', cursive;
-	color: #ddd !important;
-	font-size: 23px;
+    font-family: 'Lobster', cursive;
+    color: #ddd !important;
+    font-size: 23px;
 }
 
 .navbar-brand:hover {
-	color: #fff !important;
+    color: #fff !important;
 }
 
 .status {
-	position: fixed;
-	top: 60px;
-	right: 50px;
-	padding: 15px;
-	border-radius: 10px;
-	background-color: #000;
-	opacity: 0.5;
-	color: #fff;
-	z-index: 10000;
+    position: fixed;
+    top: 60px;
+    right: 50px;
+    padding: 15px;
+    border-radius: 10px;
+    background-color: #000;
+    opacity: 0.5;
+    color: #fff;
+    z-index: 10000;
 }
 
 .file-list {
-	padding: 0;
+    padding: 0;
 }
 
 .file-group {
-	background-color: #FFF;
-	border-radius: 5px;
-	font-weight: bold;
-	height: auto;
-	padding: 6px;
-	display: inline-block;
-	position: relative;
-	width: 100%;
+    background-color: #FFF;
+    border-radius: 5px;
+    font-weight: bold;
+    height: auto;
+    padding: 6px;
+    display: inline-block;
+    position: relative;
+    width: 100%;
 }
 
 .file-group:hover {
-	cursor: pointer;
+    cursor: pointer;
 }
 
 .logContent {
-	background-color: #FFF;
-	border-radius: 5px;
-	height: auto;
-	padding: 6px;
+    background-color: #FFF;
+    border-radius: 5px;
+    height: auto;
+    padding: 6px;
 }
 
 .error {
-	color: red;
-	font-weight: bold;
+    color: red;
+    font-weight: bold;
 }
 
 .status-error {
-	background-color: red;
+    background-color: red;
 }
 
 .logControls {
-	background-color: #FFF;
-	border-radius: 5px;
-	height: auto;
-	padding: 6px;
+    background-color: #FFF;
+    border-radius: 5px;
+    height: auto;
+    padding: 6px;
+}
+
+/* LOGIN PAGE */
+.form-login {
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+}
+
+.form-login .form-login-heading {
+    margin-bottom: 10px;
+}
+
+.form-login .form-control {
+    position: relative;
+    height: auto;
+    -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.form-login .form-control:focus {
+    z-index: 2;
+}
+
+.form-login input {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.login-container {
+    background-color: #eee;
+}
+
+.form-login input[type="password"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
 }
