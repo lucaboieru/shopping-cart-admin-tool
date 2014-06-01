@@ -214,11 +214,11 @@ function checkAppStatus (app) {
         }
     }, function (err, data) {
         if (err) { return; }
-
+        
         if (data === "running") {
             $(".start[app=" + app + "]").attr("disabled", "disabled");
             $(".stop[app=" + app + "]").removeAttr("disabled");
-        } else {
+        } else if (data === "stopped") {
             $(".stop[app=" + app + "]").attr("disabled", "disabled");
             $(".start[app=" + app + "]").removeAttr("disabled");
         }
