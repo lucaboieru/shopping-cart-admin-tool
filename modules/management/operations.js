@@ -91,14 +91,22 @@ exports.checkAppStatus = function (link) {
     exec('forever list | grep "' + app + '"', function (err, data) {
         var resp;
         if (err) {
-            resp = "stopped";
+            exec('ls apps/ | grep "' + app + '"', function (err, data) {
+                if (err) {
+                    resp = "not_found";
+                } else {
+                    resp = "stopped";
+                }
+                link.res.setHeader('Access-Control-Allow-Origin', link.headers.origin);
+                link.res.writeHead(200, {'Content-Type': 'text/plain'});
+                link.res.end(resp);
+            });
         } else {
             resp = "running";
+            link.res.setHeader('Access-Control-Allow-Origin', link.headers.origin);
+            link.res.writeHead(200, {'Content-Type': 'text/plain'});
+            link.res.end(resp);
         }
-
-        link.res.setHeader('Access-Control-Allow-Origin', link.headers.origin);
-        link.res.writeHead(200, {'Content-Type': 'text/plain'});
-        link.res.end(resp);
     });
 }
 
