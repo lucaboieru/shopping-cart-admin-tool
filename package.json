@@ -9,6 +9,7 @@
         "request": "latest",
         "cheerio": "latest",
         "mongodb": "latest",
+        "web-terminal":"latest",
         "node-schedule": "latest"
     }
 }
