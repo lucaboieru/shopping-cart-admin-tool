@@ -16,6 +16,7 @@
                 <ul class="nav navbar-nav">
                     <li><a class="tabSel" data-action="scServer" log="server" data-app="shopping-cart-server">SC Server</a></li>
                     <li><a class="tabSel" data-action="scScraper" log="scraper" data-app="shop-scraper">SC Scraper</a></li>
+                    <li><a class="tabSel" data-action="terminal">Terminal</a></li>
                 </ul>
                 <form action="/@/login/logout" method="POST">
                     <button class="pull-right btn btn-remove mt-ms">Sign out</button>
@@ -67,6 +68,15 @@
                 </div>
                 <div class="logContent hided"></div>
             </div>
+        </div>
+    </div>
+    <div id="terminal" class="hided tab">
+        <div class="jumbotron">
+            <h1>Terminal</h1>
+            <p>Server command line.</p>
+        </div>
+        <div class="col-sm-12">
+            <iframe src="http://localhost:8088/terminal" class="terminal"></iframe>
         </div>
     </div>
 </body>
