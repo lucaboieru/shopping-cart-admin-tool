@@ -2,11 +2,19 @@
     "appID": "admintool",
     "routes": {
         "/": "index",
-        "/login": "login"
+        "/login": "login",
+        "/terminal": "terminal"
     },
     "pages": {
         "index": {
             "html": "public/html/index.html",
+            "roles": ["admin"],
+            "roleFail": [
+                { "redirect": "/login" }
+            ]
+        },
+        "terminal": {
+            "html": "public/html/terminal.html",
             "roles": ["admin"],
             "roleFail": [
                 { "redirect": "/login" }
