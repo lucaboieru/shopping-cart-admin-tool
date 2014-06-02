@@ -73,6 +73,45 @@
     color: #fff !important;
 }
 
+.homeImgs {
+    padding: 0 50px;
+    position: relative;
+}
+
+.homeImgs img {
+    position: relative;
+}
+
+.node {
+    width: 50%;
+    float: left;
+    margin-left: 5%;
+}
+
+.npm {
+    width: 30%;
+    float: right;
+    top: 90px;
+    margin-right: 5%;
+}
+
+.mongo {
+    width: 100%;
+    top: -100px;
+}
+
+.github {
+    float: right;
+    width: 50%;
+    top: -100px;
+}
+
+.ubuntu {
+    float: left;
+    width: 50%;
+    top: -100px;
+}
+
 .status {
     position: fixed;
     top: 60px;

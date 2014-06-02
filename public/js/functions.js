@@ -4,7 +4,7 @@ var ACTIVE_TAB;
 $(document).ready(function () {
 
     // navigation
-    selectItem($('.tabSel').first());
+    //selectItem($('.tabSel').first());
     $('.tabSel').on('click', function () {
         selectItem($(this));
     });
