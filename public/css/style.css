@@ -121,7 +121,6 @@
 }
 
 .logControls {
-    background-color: #FFF;
     border-radius: 5px;
     height: auto;
     padding: 6px;
@@ -152,7 +151,7 @@
     z-index: 2;
 }
 
-.form-login input {
+.form-login input[type="text"] {
     margin-bottom: -1px;
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;

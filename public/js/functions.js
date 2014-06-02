@@ -12,25 +12,8 @@ $(document).ready(function () {
     // clear log
     $('.clearBtn').on('click', function () {
         $('.logContent').html('').addClass('hided');
+        $('.logControls', ACTIVE_TAB).addClass('hided');
     });
-
-    // logout
-    $('.logout').on('click', function () {
-        makeAjaxRequest({
-            operation: '/@/login/logout'
-        }, function (err, data) {
-
-            if (err) {
-                $(".status").html("<span class='glyphicon glyphicon-remove'></span> " + err).addClass("status-error").fadeIn(500);
-            } else {
-                $(".status").html("<span class='glyphicon glyphicon-ok'></span> You have been logged out.").fadeIn(500);
-            }
-
-            setTimeout(function () {
-                $(".status").fadeOut(500);
-            }, 5000);
-        });
-    })
 
     // update request
     $(".update").on('click', function () {
@@ -190,6 +173,7 @@ function showLog (data) {
 
     // clear the log container
     $('.logContent', ACTIVE_TAB).html('');
+    $('.logControls', ACTIVE_TAB).removeClass('hided');
 
     for (var i = 0; i < log.length; ++i) {
         if (log[i].indexOf('LOG') != -1) {
