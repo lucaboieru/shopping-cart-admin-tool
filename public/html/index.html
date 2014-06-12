@@ -16,6 +16,7 @@
                 <ul class="nav navbar-nav">
                     <li><a class="tabSel" data-action="scServer" log="server" data-app="shopping-cart-server">SC Server</a></li>
                     <li><a class="tabSel" data-action="scScraper" log="scraper" data-app="shop-scraper">SC Scraper</a></li>
+                    <li><a class="tabSel" data-action="asServer" log="ac_server" data-app="autostop-server/luda">AS Server</a></li>
                     <li><a class="tabSel" data-action="terminal">Terminal</a></li>
                 </ul>
                 <form action="/@/login/logout" method="POST">
@@ -63,6 +64,29 @@
                 <button class="btn btn-danger stop" app="shop-scraper" disabled="disabled"><span class="glyphicon glyphicon-off"></span> Stop</button>
             </div>
             <button class="btn btn-invert update" app="shop-scraper"><span class="glyphicon glyphicon-cloud-download"></span> Update App</button>
+        </div>
+        <div class="col-sm-12">
+            <h3>Logs</h3>
+            <div class="well log" log="scraper">
+                <ul class="file-list list-unstyled">
+
+                </ul>
+                <div class="logControls hided mb-xs">
+                    <button class="btn btn-danger clearBtn"> <span class="glyphicon glyphicon-remove"></span> Clear</button>
+                </div>
+                <div class="logContent hided"></div>
+            </div>
+        </div>
+    </div>
+    <div id="asServer" class="hided tab">
+        <div class="jumbotron">
+            <h1>AS Server</h1>
+            <p>Autostop NodeJS Server.</p>
+            <div class="btn-group">
+                <button class="btn btn-success start" app="autostop-server/luda" disabled="disabled"><span class="glyphicon glyphicon-play-circle"></span> Start</button>
+                <button class="btn btn-danger stop" app="autostop-server/luda" disabled="disabled"><span class="glyphicon glyphicon-off"></span> Stop</button>
+            </div>
+            <button class="btn btn-invert update" app="autostop-server"><span class="glyphicon glyphicon-cloud-download"></span> Update App</button>
         </div>
         <div class="col-sm-12">
             <h3>Logs</h3>

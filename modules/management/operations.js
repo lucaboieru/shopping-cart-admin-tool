@@ -12,31 +12,75 @@ exports.update = function (link) {
     var app = link.data.app;
     var log = link.data.log;
 
-    exec("forever stop apps/" + app + "/server.js", function (err) {
+    exec('ls apps/' + app + ' | grep "luda"', function (err) {
 
-        if (err) { console.log(err); }
+        if (err) {
+            // does NOT use luda framework
+            exec("forever stop apps/" + app + "/server.js", function (err) {
 
-        exec("rm -Rf apps/" + app, function (err) {
+                if (err) { console.log(err); }
 
-            // handle error
-            if (err) { 
-                console.log(err);
-            }
+                exec("rm -Rf apps/" + app, function (err) {
 
-            // clone the repo
-            git.cloneToDir(app, "apps/", function (err) {
+                    // handle error
+                    if (err) { 
+                        console.log(err);
+                    }
 
-                if (err) {
-                    link.res.writeHead(500);
-                    link.res.end(JSON.stringify(err));
-                    return;                
-                }
+                    // clone the repo
+                    git.cloneToDir(app, "apps/", function (err) {
 
-                // all good
-                link.res.writeHead(200, {'Content-Type': 'text/plain'});
-                link.res.end("App updated!");
+                        if (err) {
+                            link.res.writeHead(500);
+                            link.res.end(JSON.stringify(err));
+                            return;                
+                        }
+
+                        // all good
+                        link.res.writeHead(200, {'Content-Type': 'text/plain'});
+                        link.res.end("App updated!");
+                    });
+                });
             });
-        });
+        } else {
+
+            // uses luda framework
+            exec("forever stop apps/" + app + "/luda/server.js", function (err) {
+
+                if (err) { console.log(err); }
+
+                exec("rm -Rf apps/" + app, function (err) {
+
+                    // handle error
+                    if (err) { 
+                        console.log(err);
+                    }
+
+                    // clone the repo
+                    git.cloneToDir(app, "apps/", function (err) {
+
+                        if (err) {
+                            link.res.writeHead(500);
+                            link.res.end(JSON.stringify(err));
+                            return;                
+                        }
+
+                        git.cloneToDir("luda", "apps/" + app, function (err) {
+
+                            if (err) {
+                                link.res.writeHead(500);
+                                link.res.end(JSON.stringify(err));
+                                return;                
+                            }
+
+                            // all good
+                            link.res.writeHead(200, {'Content-Type': 'text/plain'});
+                            link.res.end("App updated!");
+                        });
+                    });
+                });
+            });
+        }
     });
 
     // delete logs
@@ -91,7 +135,8 @@ exports.checkAppStatus = function (link) {
     exec('forever list | grep "' + app + '"', function (err, data) {
         var resp;
         if (err) {
-            exec('ls apps/ | grep "' + app + '"', function (err, data) {
+
+            exec('ls apps/ | grep "' + app.split("/")[0] + '"', function (err, data) {
                 if (err) {
                     resp = "not_found";
                 } else {

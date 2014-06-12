@@ -200,11 +200,11 @@ function checkAppStatus (app) {
         if (err) { return; }
         
         if (data === "running") {
-            $(".start[app=" + app + "]").attr("disabled", "disabled");
-            $(".stop[app=" + app + "]").removeAttr("disabled");
+            $(".start[app='" + app + "']").attr("disabled", "disabled");
+            $(".stop[app='" + app + "']").removeAttr("disabled");
         } else if (data === "stopped") {
-            $(".stop[app=" + app + "]").attr("disabled", "disabled");
-            $(".start[app=" + app + "]").removeAttr("disabled");
+            $(".stop[app='" + app + "']").attr("disabled", "disabled");
+            $(".start[app='" + app + "']").removeAttr("disabled");
         }
     });
 }
