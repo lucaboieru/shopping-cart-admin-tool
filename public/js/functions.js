@@ -1,4 +1,4 @@
-var URL = 'http://127.0.0.1:9016'
+var URL = 'http://squaregmbh.cloudapp.net:9016'
 var ACTIVE_TAB;
 
 $(document).ready(function () {
